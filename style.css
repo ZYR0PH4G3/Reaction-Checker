@@ -37,3 +37,45 @@ body {
     display: grid;
     place-items: center;
 }
+
+.main-menu {
+    cursor: pointer;
+}
+
+.container {
+    max-width: 700px;
+    padding: 0 32px;
+}
+
+.main-menu h1 {
+    font-size: 70px;
+    margin: 8px, 0;
+}
+
+.container p {
+    font-size: 20px;
+    line-height: 2;
+    font-weight: 800;
+    margin: 0;
+}
+
+.end-screen h1 {
+    font-size: 30px;
+}
+
+.reaction-time-text {
+    font-size: 100px;
+    font-weight: 900;
+}
+
+.end-screen .play-again-btn {
+    border: none;
+    background-color: #faf0ca;
+    font-size: 20px;
+    padding: 8px 32px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 4px;
+    cursor: pointer;
+}

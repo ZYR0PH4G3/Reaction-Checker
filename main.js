@@ -1,7 +1,9 @@
 const mainMenu = document.querySelector(".main-menu");
 const clickableArea = document.querySelector(".clickable-area");
-const message = document.querySelector(".clickable-area .message")
+const message = document.querySelector(".clickable-area .message");
 const endScreen = document.querySelector(".end-screen");
+const reactionTimeText = document.querySelector(".end-screen .reaction-time-text");
+const playAgainBtn = document.querySelector(".end-screen .play-again-btn");
 
 let timer;
 let greeDispalyed;
@@ -38,7 +40,6 @@ const startGame = () => {
     waitingForStart = false;
     waitingForGreen = true;
 
-    console.log("Random Number: ", randomNumber);
 };
 
 mainMenu.addEventListener("click", () => {
@@ -57,8 +58,8 @@ const endGame = () => {
     });
 
     let averageScore = Math.round(total / scores.length);
-    console.log("Total; ", total);
-    console.log("Average Score: ", averageScore);
+
+    reactionTimeText.innerHTML = `${averageScore} ms`;
 };
 
 const displayReactionTime = (rt) => {
@@ -67,7 +68,6 @@ const displayReactionTime = (rt) => {
     greeDispalyed = false;
     waitingForStart = true;
     scores.push(rt);
-    console.log("Scores: ", scores);
 
     if (scores.length >= 3) {
         endGame();
@@ -86,7 +86,6 @@ clickableArea.addEventListener("click", () => {
     if (greeDispalyed) {
         let clickTime = Date.now();
         let reactionTime = clickTime - timeNow;
-        console.log("Reaction Time: ", reactionTime);
         displayReactionTime(reactionTime);
         return;
     };
@@ -99,4 +98,10 @@ clickableArea.addEventListener("click", () => {
     if (waitingForGreen) {
         displayTooSoon();
     };
+});
+
+playAgainBtn.addEventListener("click", () => {
+    endScreen.classList.remove("active");
+    init();
+    startGame();
 });
